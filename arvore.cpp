@@ -36,13 +36,39 @@ struct noBst* alocarNovoNo(int val){
     
 };
 
-void inserir(struct noBst** raiz, int val, int* tamanho){
+void inserirNoRec(struct noBst** raiz, struct noBst *novoNo){
     
-    
+    if((*raiz) == NULL)
+        (*raiz) = novoNo;
+    else{
+        if(novoNo->val > (*raiz)->val)
+            inserirNoRec(&(*raiz)->dir, novoNo);
+        else
+            inserirNoRec(&(*raiz)->esq, novoNo);
+    }
     
 }
 
+void inserirNoIte(){
+    
+}
+
+//precisa ajustar
+void buscaRec(struct noBst *raiz, int val){
+    
+    if((*raiz) == NULL)
+        return false;
+    else{
+        
+    }
+    
+}
+
+
+
 int main() {
+    
+    //struct noBst *raiz = NULL;
     
     
 
