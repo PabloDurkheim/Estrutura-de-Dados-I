@@ -38,9 +38,12 @@ struct noBst* alocarNovoNo(int val){
 
 void inserirNoRec(struct noBst** raiz, struct noBst *novoNo){
     
+    //se for nulo, vai apenas inserir o novoNo
     if((*raiz) == NULL)
         (*raiz) = novoNo;
     else{
+        
+        //se o valor for maior que verificado, vai passar a direita como paramêtro até que raiz seja == null, se não, passa a esquerda
         if(novoNo->val > (*raiz)->val)
             inserirNoRec(&(*raiz)->dir, novoNo);
         else
@@ -49,22 +52,66 @@ void inserirNoRec(struct noBst** raiz, struct noBst *novoNo){
     
 }
 
-void inserirNoIte(){
+void inserirNoIte(struct bst *arv, struct noBst *novoNo){
+    
+    if (arv->raiz == NULL) {
+        arv->raiz = novoNo;
+    } else {
+        struct noBst *aux = arv->raiz;
+        while (aux != NULL) {
+            if (novoNo->val > aux->val)
+                aux = aux->dir;
+            else
+                aux = aux->esq;
+            }
+            aux = novoNo;
+    }
     
 }
 
 //precisa ajustar
-void buscaRec(struct noBst *raiz, int val){
+bool buscaRec(struct noBst *raiz, int val){
     
-    if((*raiz) == NULL)
+    if( raiz == NULL)
         return false;
     else{
+        
+        //se for igual, retorna true, se não for, vai buscar na direita ou esquerda
+        if(val == raiz->val){
+            return true;
+        }else if(val > raiz->val){
+            buscaRec(raiz->dir, val);
+        }else{
+             buscaRec(raiz->esq, val);
+        }
         
     }
     
 }
 
-
+bool buscaIt(struct bst *arv, int val) {
+    
+    if(arv->raiz == NULL){
+        return false;
+    }else{
+        
+        struct noBst *aux = arv->raiz;
+        
+        while(aux != NULL){
+            
+            if(val == aux->val){
+                return true;
+            }else if(val > aux->val){
+                aux = aux->dir;
+            }else{
+                aux = aux->esq;
+            }
+            
+        }
+        return false;
+    }
+    
+}
 
 int main() {
     
