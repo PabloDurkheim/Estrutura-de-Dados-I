@@ -69,7 +69,6 @@ void inserirNoIte(struct bst *arv, struct noBst *novoNo){
     
 }
 
-//precisa ajustar
 bool buscaRec(struct noBst *raiz, int val){
     
     if( raiz == NULL)
