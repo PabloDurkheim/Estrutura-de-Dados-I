@@ -176,13 +176,16 @@ struct noBst *remover(struct noBst *raiz, int val) {
       raiz->dir = remover(raiz->dir, val);
     else { // encontramos nó contendo val
       if (raiz->esq == NULL && raiz->dir == NULL) { // caso1: nó folha
+        //printf("entrou aqui: %d \n",raiz->val);
         free(raiz);
         raiz = NULL;
       } else if (raiz->esq == NULL) { // caso2: nó com um filho (dir)
+        
         struct noBst *temp = raiz->dir;
         free(raiz);
         raiz = temp;
       } else if (raiz->dir == NULL) { // caso2: nó com um filho (esq)
+        //printf("entrou aqui: %d \n",raiz->val);
         struct noBst *temp = raiz->esq;
         free(raiz);
         raiz = temp;
@@ -219,10 +222,11 @@ int main(void) {
   inserir(&raiz, 18);
   inserir(&raiz, 2);
   inserir(&raiz, 6);
+  //inserir(&raiz, 5);
   inserir(&raiz, 16);
   inserir(&raiz, 20);
 
-  // imprimir(raiz);
+   imprimir(raiz);
 
   // BUSCA
   // printf("\n%d\n", buscar(raiz, 40));
@@ -239,12 +243,14 @@ int main(void) {
   // printf("\nAltura: %d\n", altura(raiz));
 
   // NAVEGAÇÃO
-  // navNivel(raiz);
-  // navPreOrdem(raiz);
+  //raiz = remover(raiz, 18);
+   //navNivel(raiz);
+  //navPreOrdem(raiz);
   // navEmOrdem(raiz);
   // navPosOrdem(raiz);
 
   // REMOÇÃO
+  /*
   imprimir(raiz);
   printf("\n");
   raiz = remover(raiz, 6);
@@ -259,4 +265,5 @@ int main(void) {
   raiz = remover(raiz, 18);
   imprimir(raiz);
   printf("\n");
+  */
 }
