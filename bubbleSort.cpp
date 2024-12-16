@@ -3,11 +3,23 @@
 
 using namespace std;
 
+void imprimir(int *v, int tam){
+    
+    for(int i = 0; i < tam; i++){
+        cout << v[i] << " ";
+    }
+    
+    cout<<endl<<endl;
+    
+}
+
 //versão melhorada
 void bubbleSort(int *v, int tam){
     
     for(int i = 0; i < (tam-1); i++){
         bool troca = false;
+        
+        cout << "--- Iteração: " << i << " ---" <<endl<<endl;
         
         for(int j = 0; j < (tam-i-1); j++){
             
@@ -17,6 +29,7 @@ void bubbleSort(int *v, int tam){
                 v[j+1] = aux;
                 troca = true;
             }
+            imprimir(v, tam);
         }
         
         if(troca == false){
@@ -36,11 +49,13 @@ int main() {
         v[i] = rand() % 100;
     }
     
+    cout << "Vetor original: ";
+    
     for(int i = 0; i < tamanho; i++){
         cout << v[i] << " ";
     }
     
-    cout << endl;
+    cout << endl << endl;
     
     bubbleSort(v, tamanho);
     
