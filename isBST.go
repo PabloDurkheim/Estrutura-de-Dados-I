@@ -35,6 +35,15 @@ func novoNo(val int) *NoBst {
 	return &NoBst{Val: val, Esq: nil, Dir: nil}
 }
 
+// Função para contar a quantidade de elementos em uma BST
+func contarElementos(raiz *NoBst) int {
+	if raiz == nil {
+		return 0
+	}
+	// Conta o nó atual e soma recursivamente os nós das subárvores esquerda e direita
+	return 1 + contarElementos(raiz.Esq) + contarElementos(raiz.Dir)
+}
+
 func main() {
 	// Exemplo de árvore
 	/*
@@ -58,4 +67,8 @@ func main() {
 	} else {
 		fmt.Println("A árvore NÃO é uma BST.")
 	}
+
+	// Calcula e imprime a quantidade de elementos na árvore
+	totalElementos := contarElementos(raiz)
+	fmt.Printf("A árvore tem %d elementos.\n", totalElementos)
 }
